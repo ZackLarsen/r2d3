@@ -1,0 +1,82 @@
+---
+title: "r2d3 Flex Dashboard"
+author: "Zack Larsen"
+date: "June 9, 2019"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard, r2d3)
+```
+
+Landing Page
+=======================================================================
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Bubble Chart
+
+```{r bubbles, cache=TRUE}
+
+r2d3::r2d3(data = read.csv("https://raw.githubusercontent.com/rstudio/r2d3/master/vignettes/gallery/bubbles/flare.csv"), d3_version = 4, script = "bubbles.js")
+
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Stacked Histogram
+
+```{r stacked_histo}
+
+r2d3::r2d3(d3_version = 4, script = "stackedbars.js")
+
+```
+
+### Calendar
+
+```{r calendar}
+
+r2d3::r2d3(data = read.csv("https://raw.githubusercontent.com/rstudio/r2d3/master/vignettes/gallery/calendar/dji-latest.csv"), d3_version = 4, container = "div", options = list(start = 2006, end = 2011), script = "calendar.js")
+
+```
+
+
+
+
+Page 2
+=======================================================================
+
+Column {data-width=550}
+-----------------------------------------------------------------------
+
+### Voronoi
+
+```{r Voronoi, cache=TRUE}
+
+r2d3::r2d3(d3_version = 4, script = "voronoi.js")
+
+```
+
+Column {data-width=450}
+-----------------------------------------------------------------------
+
+### Treemap
+
+```{r Treemap}
+
+r2d3::r2d3(data = jsonlite::read_json("https://raw.githubusercontent.com/rstudio/r2d3/master/vignettes/gallery/treemap/flare.json"), d3_version = 4, script = "treemap.js")
+
+```
+
+### Steamgraph
+
+```{r steamgraph}
+
+r2d3::r2d3(data=c(), d3_version = 4, script = "streamgraph.js")
+
+```
